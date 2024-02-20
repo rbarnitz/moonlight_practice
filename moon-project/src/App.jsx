@@ -6,7 +6,8 @@ import MoonIcon from './components/MoonIcon';
 import SunCalculations from './components/SunCalculations';
 import Location from './components/Location';
 import Illuminance from './components/Illuminance';
-import CalendarPicker from './components/CalendarPicker';
+import CalendarPicker from './components/CalendarPicker/CalendarPicker';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 //logos
 
@@ -28,13 +29,27 @@ function App() {
   return (
     <>
       <Header />
-      <CalendarPicker />
-      <Location />
-      <div className="card">
-        <h1>Moon Data Tests</h1>
-        <Calendar dateChange={handleDateChange} />
-      </div>
-      {selectedDate && <SunCalculations selectedDate={selectedDate} />}
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Location />
+          </Route>
+          <Route path="/calendarpicker" exact component={CalendarPicker} />
+          <Route
+            path="/calendar"
+            exact
+            render={() => (
+              <div className="card">
+                <h1>Moon Data Tests</h1>
+                <Calendar dateChange={handleDateChange} />
+                {selectedDate && (
+                  <SunCalculations selectedDate={selectedDate} />
+                )}
+              </div>
+            )}
+          />
+        </Switch>
+      </Router>
     </>
   );
 }

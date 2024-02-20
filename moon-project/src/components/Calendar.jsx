@@ -5,6 +5,8 @@ import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
+import { useHistory } from 'react-router-dom';
+
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 //Dynamic calendar
@@ -34,6 +36,13 @@ function Calendar({ dateChange }) {
   //       />
   //     </LocalizationProvider>
 
+  //linking to date pickers page
+  let history = useHistory();
+
+  function handleNext() {
+    history.push('/calendarpicker');
+  }
+
   return (
     <>
       <p> Hello from Calendar</p>
@@ -43,6 +52,8 @@ function Calendar({ dateChange }) {
           value={value}
           onChange={handleDateChange}
         />
+
+        <button onClick={handleNext}>Let's pick some dates!</button>
       </LocalizationProvider>
     </>
   );

@@ -11,15 +11,18 @@ import './CalendarPicker.css';
 // Pull all compatible days for that month
 //Send dates to an array, to then display in the calendar
 
-
 function CalendarPicker() {
   //testing dates for formatting
   const testDates = ['07-02-2024', '08-02-2024', '15-02-2024'];
 
-
   //set dates to a useable format
 
-  return <Calendar />;
+  return (
+    <>
+      <h1>Choose a date range for your next trip:</h1>
+      <Calendar />
+    </>
+  );
 }
 
 export default CalendarPicker;

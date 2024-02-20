@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Location = () => {
   const [townName, setTownName] = useState('');
@@ -47,8 +48,16 @@ const Location = () => {
     }
   };
 
+  //linking to calendar page
+  let history = useHistory();
+
+  function handleNext() {
+    history.push('/calendar');
+  }
+
   return (
     <div>
+      <h1>Please enter your destination:</h1>
       <input
         type="text"
         value={townName}
@@ -64,6 +73,8 @@ const Location = () => {
       )}
 
       <p>Location is: {resultName.name}</p>
+
+      <button onClick={handleNext}>Next</button>
     </div>
   );
 };
