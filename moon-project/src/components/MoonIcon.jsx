@@ -76,6 +76,8 @@ import {
 
 const moonComponents = [
   WiMoonNew,
+  WiMoonNew,
+  WiMoonNew,
   WiMoonWaxingCrescent1,
   WiMoonWaxingCrescent2,
   WiMoonWaxingCrescent3,
@@ -87,6 +89,8 @@ const moonComponents = [
   WiMoonWaxingGibbous3,
   WiMoonWaxingGibbous4,
   WiMoonWaxingGibbous5,
+  WiMoonFull,
+  WiMoonFull,
   WiMoonFull,
   WiMoonWaningGibbous1,
   WiMoonWaningGibbous2,

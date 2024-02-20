@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const Location = () => {
   const [townName, setTownName] = useState('');
+
+  const dispatch = useDispatch();
 
   //search result location
   const [coordinates, setCoordinates] = useState(null);
 
   //search result: geotagged name
   const [resultName, setResultName] = useState('');
-
   const handleInputChange = (event) => {
     setTownName(event.target.value);
   };
@@ -36,6 +38,16 @@ const Location = () => {
 
         //correct search results
         setCoordinates({ latitude: lat, longitude: lng });
+
+        //dispatch results to reducer
+        dispatch({
+          type: 'COORDINATES_VALUE',
+          payload: {
+            lat: lat,
+            lng: lng,
+            searchedLocation: searchedLocation,
+          },
+        });
 
         //variable for location that was searched
         setResultName({ name: searchedLocation });
