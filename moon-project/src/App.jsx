@@ -6,6 +6,7 @@ import MoonIcon from './components/MoonIcon';
 import SunCalculations from './components/SunCalculations';
 import Location from './components/Location';
 import Illuminance from './components/Illuminance';
+import CalendarPicker from './components/CalendarPicker';
 
 //logos
 
@@ -27,6 +28,7 @@ function App() {
   return (
     <>
       <Header />
+      <CalendarPicker />
       <Location />
       <div className="card">
         <h1>Moon Data Tests</h1>

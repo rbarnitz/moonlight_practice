@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 
 const Location = () => {
   const [townName, setTownName] = useState('');
+
+  //search result location
   const [coordinates, setCoordinates] = useState(null);
+
+  //search result: geotagged name
   const [resultName, setResultName] = useState('');
 
   const handleInputChange = (event) => {
@@ -25,9 +29,14 @@ const Location = () => {
 
       if (data.results && data.results.length > 0) {
         const { lat, lng } = data.results[0].geometry;
+
+        //assign results variable
         const searchedLocation = data.results[0].formatted;
 
+        //correct search results
         setCoordinates({ latitude: lat, longitude: lng });
+
+        //variable for location that was searched
         setResultName({ name: searchedLocation });
       } else {
         throw new Error('No results found');
@@ -53,6 +62,7 @@ const Location = () => {
           Latitude: {coordinates.latitude}, Longitude: {coordinates.longitude}
         </p>
       )}
+
       <p>Location is: {resultName.name}</p>
     </div>
   );

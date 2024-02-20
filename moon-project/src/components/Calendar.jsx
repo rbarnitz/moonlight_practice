@@ -7,6 +7,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
+//Dynamic calendar
+// import { StaticDateRangePicker } from '@mui/x-date-pickers-pro/StaticDateRangePicker';
+
 function Calendar({ dateChange }) {
   const [value, setValue] = React.useState();
 
@@ -23,14 +26,25 @@ function Calendar({ dateChange }) {
     //creating date function to pass value back to app
   };
 
+  //will create and return a date range
+  // <LocalizationProvider dateAdapter={AdapterDayjs}>
+  //       <StaticDateRangePicker
+  //       value={value}
+  //       onChange={(newValue) => setValue(newValue)}
+  //       />
+  //     </LocalizationProvider>
+
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <StaticDatePicker
-        label="Moon Date"
-        value={value}
-        onChange={handleDateChange}
-      />
-    </LocalizationProvider>
+    <>
+      <p> Hello from Calendar</p>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <StaticDatePicker
+          label="Moon Date Range"
+          value={value}
+          onChange={handleDateChange}
+        />
+      </LocalizationProvider>
+    </>
   );
 }
 
