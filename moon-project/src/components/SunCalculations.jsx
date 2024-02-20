@@ -18,11 +18,14 @@ function SunCalculations(props) {
   const lngReducer = useSelector(
     (store) => store.addCoordinatesReducer.longitude
   );
+  const locationReducer = useSelector(
+    (store) => store.addCoordinatesReducer.searchedLocation
+  );
 
   //convert date from props to be used in library
   const date = new Date(props.selectedDate);
-  const latitude = 37.7749; // Example latitude (San Francisco)
-  const longitude = -122.4194; // Example longitude (San Francisco)
+  // const latitude = 37.7749; // Example latitude (San Francisco)
+  // const longitude = -122.4194; // Example longitude (San Francisco)
 
   // Calculate sunrise and sunset times
   const times = SunCalc.getTimes(date, latReducer, lngReducer);
@@ -50,9 +53,17 @@ function SunCalculations(props) {
   return (
     <>
       <MoonIcon moonData={moonData} />
+      <p>Location is: {locationReducer}</p>
+      <p>Moon Illumination is: {illumination.fraction}</p>
       <p>Moon Illumination is: {illumination.fraction}</p>
       <p>Moon phase is: {moonData}</p>
-      <p>Moon Rise time is: {moonRiseSet.rise.toLocaleTimeString()}</p>
+      <p>
+        Moon Rise time is:{' '}
+        {moonRiseSet.rise
+          ? moonRiseSet.rise.toLocaleTimeString()
+          : 'Moonrise time not available'}
+      </p>
+      {moonSet && <p>Moon Set time is: {moonSet.toLocaleTimeString()}</p>}{' '}
       {moonSet && <p>Moon Set time is: {moonSet.toLocaleTimeString()}</p>}
     </>
   );
