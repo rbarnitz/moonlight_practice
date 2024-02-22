@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import Calendar from 'react-calendar';
 
 //importing styling for calendar
@@ -20,7 +19,10 @@ function CalendarPicker() {
   return (
     <>
       <h1>Choose a date range for your next trip:</h1>
-      <Calendar />
+      <HTMLComment>
+        {' '}
+        <Calendar />{' '}
+      </HTMLComment>
     </>
   );
 }

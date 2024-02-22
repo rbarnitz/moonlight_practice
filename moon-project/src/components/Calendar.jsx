@@ -1,11 +1,15 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
+import './Calendar.css';
 
 //MUI adaptors
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { useHistory } from 'react-router-dom';
+
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 //import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
@@ -40,19 +44,24 @@ function Calendar({ dateChange }) {
   let history = useHistory();
 
   function handleNext() {
-    history.push('/calendarpicker');
+    history.push('/reactdaypicker');
   }
 
   return (
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <StaticDatePicker
+          className="calendar"
           label="Moon Date Range"
           value={value}
           onChange={handleDateChange}
         />
 
-        <button onClick={handleNext}>Let's pick some dates!</button>
+        <Stack direction="row">
+          <Button variant="outlined" onClick={handleNext}>
+            Next
+          </Button>
+        </Stack>
       </LocalizationProvider>
     </>
   );

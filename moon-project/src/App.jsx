@@ -8,6 +8,10 @@ import Location from './components/Location';
 import Illuminance from './components/Illuminance';
 import CalendarPicker from './components/CalendarPicker/CalendarPicker';
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import ReactDayPicker from './components/ReactDayPicker/ReactDayPicker';
+
+//may be removed later
+import TestLanding from './components/TestLanding';
 
 //logos
 
@@ -34,7 +38,8 @@ function App() {
           <Route path="/" exact>
             <Location />
           </Route>
-          <Route path="/calendarpicker" exact component={CalendarPicker} />
+
+          <Route path="/reactdaypicker" exact component={ReactDayPicker} />
           <Route
             path="/calendar"
             exact

@@ -1,0 +1,27 @@
+body {
+  background-image: url('https://images.unsplash.com/photo-1487621167305-5d248087c724');
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-position: center; /* Centers the image within the background */
+}
+
+#bold {
+  font-weight: bold;
+}
+
+h1 {
+  font-weight: bold;
+  color: rgb(171, 195, 195);
+}
+
+p {
+  color: rgb(175, 238, 238);
+}
+
+.calendar {
+  background-color: #131a1e; /* Your desired background color */
+}
+
+.MuiButton-outlined {
+  color: rgb(157, 205, 205) !important;
+  border-color: rgb(139, 155, 154) !important;
+}

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MoonIcon from './MoonIcon';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 //import suncalc library
 import SunCalc from 'suncalc';
@@ -32,6 +34,9 @@ function SunCalculations(props) {
   const illumination = SunCalc.getMoonIllumination(date);
   const moonRiseSet = SunCalc.getMoonTimes(date, latReducer, lngReducer);
 
+  //make illumination a percentage
+  const illuminationPercentage = (illumination.fraction * 100).toFixed(0);
+
   const moonRise = moonRiseSet.rise;
   let moonSet = moonRiseSet.set;
 
@@ -54,17 +59,16 @@ function SunCalculations(props) {
     <>
       <MoonIcon moonData={moonData} />
       <p>Location is: {locationReducer}</p>
-      <p>Moon Illumination is: {illumination.fraction}</p>
-      <p>Moon Illumination is: {illumination.fraction}</p>
-      <p>Moon phase is: {moonData}</p>
+      <p>Moon Illumination is: {illuminationPercentage}%</p>
       <p>
         Moon Rise time is:{' '}
-        {moonRiseSet.rise
-          ? moonRiseSet.rise.toLocaleTimeString()
-          : 'Moonrise time not available'}
+        {moonRiseSet.rise ? (
+          moonRiseSet.rise.toLocaleTimeString()
+        ) : (
+          <Alert severity="info">No moon rise data found.</Alert>
+        )}
       </p>
       {moonSet && <p>Moon Set time is: {moonSet.toLocaleTimeString()}</p>}{' '}
-      {moonSet && <p>Moon Set time is: {moonSet.toLocaleTimeString()}</p>}
     </>
   );
 }
