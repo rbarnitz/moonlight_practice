@@ -45,12 +45,16 @@ function App() {
             path="/calendar"
             exact
             render={() => (
-              <div className="card">
-                <ReactCalendar dateChange={handleDateChange} />
-                {selectedDate && (
-                  <SunCalculations selectedDate={selectedDate} />
-                )}
-              </div>
+              <>
+                <div className="card">
+                  <ReactCalendar dateChange={handleDateChange} />
+                </div>
+                <div>
+                  {selectedDate && (
+                    <SunCalculations selectedDate={selectedDate} />
+                  )}
+                </div>
+              </>
             )}
           />
         </Switch>

@@ -4,6 +4,11 @@ import { format } from 'date-fns';
 import dayjs from 'dayjs';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
+import { useHistory } from 'react-router-dom';
+
+//mui components
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 function ReactCalendar({ dateChange }) {
   const [selectedDay, setSelectedDay] = useState();
@@ -15,19 +20,33 @@ function ReactCalendar({ dateChange }) {
   //send up as a prop
   dateChange(formattedDate);
 
+  //show date in footer
   const footer = selectedDay ? (
     <p>{format(selectedDay, 'PPP')}.</p>
   ) : (
     <p>Please pick a day.</p>
   );
 
+  let history = useHistory();
+
+  function handleNext() {
+    history.push('/reactdaypicker');
+  }
+
   return (
-    <DayPicker
-      mode="single"
-      selected={selectedDay}
-      onSelect={setSelectedDay}
-      footer={footer}
-    />
+    <>
+      <DayPicker
+        mode="single"
+        selected={selectedDay}
+        onSelect={setSelectedDay}
+        footer={footer}
+      />
+      <Stack direction="row">
+        <Button variant="outlined" onClick={handleNext}>
+          Next
+        </Button>
+      </Stack>
+    </>
   );
 }
 
