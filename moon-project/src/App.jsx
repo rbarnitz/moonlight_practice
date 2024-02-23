@@ -9,6 +9,7 @@ import Illuminance from './components/Illuminance';
 import CalendarPicker from './components/CalendarPicker/CalendarPicker';
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import ReactDayPicker from './components/ReactDayPicker/ReactDayPicker';
+import ReactCalendar from './components/ReactCalendar';
 
 //may be removed later
 import TestLanding from './components/TestLanding';
@@ -45,8 +46,7 @@ function App() {
             exact
             render={() => (
               <div className="card">
-                <h1>Moon Data Tests</h1>
-                <Calendar dateChange={handleDateChange} />
+                <ReactCalendar dateChange={handleDateChange} />
                 {selectedDate && (
                   <SunCalculations selectedDate={selectedDate} />
                 )}
