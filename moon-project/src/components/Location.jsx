@@ -45,7 +45,12 @@ const Location = () => {
       const data = await response.json();
 
       if (data.results && data.results.length > 0) {
+        //pull location data
         const { lat, lng } = data.results[0].geometry;
+
+        //pull timezone offset
+        const timezoneData = data.results[0].timezone.offset_sec;
+        console.log('Timezone Data:', timezoneData);
 
         //assign results variable
         const searchedLocation = data.results[0].formatted;
@@ -60,6 +65,7 @@ const Location = () => {
             lat: lat,
             lng: lng,
             searchedLocation: searchedLocation,
+            timeZone: timeZoneData,
           },
         });
 

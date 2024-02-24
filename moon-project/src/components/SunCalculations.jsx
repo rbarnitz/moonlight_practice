@@ -24,6 +24,11 @@ function SunCalculations(props) {
     (store) => store.addCoordinatesReducer.searchedLocation
   );
 
+  const timeZoneReducer = useSelector(
+    (store) => store.addCoordinatesReducer.timeZoneReducer
+  );
+  console.log('time zone is (sunCalcs): ', timeZoneReducer);
+
   //convert date from props to be used in library
   const date = new Date(props.selectedDate);
   // const latitude = 37.7749; // Example latitude (San Francisco)
@@ -58,6 +63,7 @@ function SunCalculations(props) {
   return (
     <>
       <MoonIcon moonData={moonData} />
+      <p>Timezone is: {timeZoneReducer}</p>
       <p>Location is: {locationReducer}</p>
       <p>Moon Illumination is: {illuminationPercentage}%</p>
       <p>

@@ -8,6 +8,7 @@ const initialState = {
     latitude: 0,
     longitude: 0,
     searchedLocation: '',
+    timeZone: '',
   },
 };
 
@@ -19,6 +20,7 @@ const addCoordinatesReducer = (state = initialState, action) => {
         latitude: action.payload.lat,
         longitude: action.payload.lng,
         searchedLocation: action.payload.searchedLocation,
+        timeZone: action.payload.timeZoneData,
       };
     default:
       return state;
